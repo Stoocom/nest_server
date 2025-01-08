@@ -14,7 +14,7 @@ import { MarkersModule } from './markers/markers.module';
     UserModule, 
     RoleModule,
     MarkersModule,
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({

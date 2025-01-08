@@ -6,10 +6,14 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { existsSync, mkdirSync, createReadStream} from 'fs';
 import { BoundsMarkerDto } from './dto/bounds-marker.dto';
+import { ConfigService } from '@nestjs/config';
 
 @Controller('markers')
 export class MarkersController {
-  constructor(private readonly markersService: MarkersService) {}
+  constructor(
+    private readonly markersService: MarkersService,
+    configService: ConfigService
+  ) {}
 
   @Post()
   create(@Body() createMarkerDto: CreateMarkerDto) {
